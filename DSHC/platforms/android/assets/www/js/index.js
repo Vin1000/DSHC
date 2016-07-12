@@ -10,17 +10,14 @@ var url = "https://help.deepsecurity.trendmicro.com/Welcome.html";
 //IAB reference
 var ref = null;
 
-$('.app').click(goToHelpCenter);
-
 function onDeviceReady() {
 	//override
 	window.open = cordova.InAppBrowser.open;
 	goToHelpCenter();
-	
-	
 }
 
 function goToHelpCenter() {
+	//open Help Center with InAppBrowser Cordova plugin
 	ref = cordova.InAppBrowser.open(url, '_blank', 'location=no');
 	ref.addEventListener('loadstart',iabLoadStart);
 	ref.addEventListener('loadstop', iabLoadStop);

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.trendmicro.deepsecurity.helpcenter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Deep Security Help Center</name>
+    <name>DS Help Center</name>
     <description>
         Easy access to Trend Micro's Deep Security Help Center
     </description>
@@ -33,7 +33,6 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="~5.1.1" />
-	<preference name="SplashScreen" value="splash" />
 	<preference name="AutoHideSplashScreen" value="false" />
 	<preference name="SplashScreenDelay" value="8000" />
 	<preference name="ShowSplashScreenSpinner" value="false"/>

@@ -21,7 +21,7 @@
     <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
     <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
     <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
-    <name>Deep Security Help Center</name>
+    <name>DS Help Center</name>
     <description>
         Easy access to Trend Micro's Deep Security Help Center
     </description>
@@ -36,7 +36,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <preference name="SplashScreen" value="splash" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="8000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
