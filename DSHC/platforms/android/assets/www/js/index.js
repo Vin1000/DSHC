@@ -1,3 +1,9 @@
+/*
+Trend Micro Deep Security Help Center Mobile App
+A HackDay 7 Projet
+By Vincent Pelletier
+*/
+
 //Launch Help Center
 document.addEventListener("deviceready", onDeviceReady, false);
 var url = "https://help.deepsecurity.trendmicro.com/Welcome.html";
@@ -23,34 +29,42 @@ function goToHelpCenter() {
 }
 
 function iabLoadStart(event) {
-	//alert('start: ' + event.url);
+	//page starting to load
 }
 
 function iabLoadStop(event) {
-	//alert('stop: ' + event.url);
-	var js = "var menu = $('aside.right-off-canvas-menu');menu.addClass('left-off-canvas-menu');menu.removeClass('right-off-canvas-menu');var icon = $('.right-off-canvas-toggle');icon.addClass('left-off-canvas-toggle');icon.removeClass('right-off-canvas-toggle');icon.attr('style', 'right:" + (window.screen.width - 50) + "px;background-color:#333333;border-radius:4px;');var child = $(menu.children()[0]);child.attr('data-mc-css-sub-menu','left-submenu');";
+	//page fully loaded
+	var js = "var menu = $('aside.right-off-canvas-menu');menu.addClass('left-off-canvas-menu');menu.removeClass('right-off-canvas-menu');";
+	js += "var icon = $('.right-off-canvas-toggle');icon.addClass('left-off-canvas-toggle');icon.removeClass('right-off-canvas-toggle');icon.attr('style', 'right:" + (window.screen.width - 50) + "px;background-color:#333333;border-radius:4px;');";
+	js += "var child = $(menu.children()[0]);child.attr('data-mc-css-sub-menu','left-submenu');";
+	//re-render
 	js += "$(document).foundation('offcanvas', 'reflow');";
+	
+	//give it some time (1ms)
+	js = "setTimeout(function() {" + js + "}, 1);"
 	ref.executeScript({
 		code: js
 	}, function() {
-		//success
+		//script done
 	});
+	//css override for "See all topics" popups
 	ref.insertCSS({
 		code: "div.link-list-popup{left:7px;margin-right:10px!important;overflow-y: scroll;max-height: 300px;}"
 	});
 }
 
 function iabLoadError(event) {
-	//alert('error: ' + event.message);
+	//error - close and reopen webpage
 	iabClose();
 }
 
 function iabClose(event) {
-	//alert('exit')
+	//exiting
 	ref.removeEventListener('loadstart',iabLoadStart);
 	ref.removeEventListener('loadstop', iabLoadStop);
 	ref.removeEventListener('loaderror', iabLoadError);
 	ref.removeEventListener('exit', iabClose);
 	ref = null;
+	//reopen webpage
 	goToHelpCenter();
 }
