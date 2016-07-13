@@ -46,7 +46,7 @@ function iabLoadStop(event) {
 	});
 	//css override for "See all topics" popups
 	ref.insertCSS({
-		code: "div.link-list-popup{left:7px;margin-right:10px!important;overflow-y: scroll;max-height: 300px;}"
+		code: "div.link-list-popup{left:7px;margin-right:10px!important;overflow-y: scroll;max-height: 300px;}.tab-bar-section a.logo{left:40px;}"
 	});
 }
 
